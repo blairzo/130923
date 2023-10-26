@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>130923</title>
+    <style>
+        #random-link {
+            text-decoration: none;
+            color: blue;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: #333333;
+            text-align: center;
+          }
+
+          h2 {
+            font-style: italic;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            text-align: center;
+          }
+
+          h3 {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #ff0000;
+            text-align: center;
+          }
+
+          p {
+            text-align: center;
+          }
+
+
+    </style>
+</head>
+<body>
+    <h1>Love You!</h1>
+    <h2>Do you remember here...</h2>
+    <!-- <p>Click the random link below:</p> -->
+    <p id="random-link-container">
+        <a id="random-link" href="#">Visit Random Page</a>
+    </p>
+    <h3>&#9829;</h3>
+
+    <script>
+        // List of possible values for the random part of the link
+        const linkValues = [
+            "53.39005865061693,-2.9253110310753208",
+            "32.64575056681338,-16.827076944901506",
+            "54.85241383320281,-5.76679332456996",
+            "53.399934771735644,-2.9906713613781806",
+            "53.31925130365673,-2.392687948444641",
+            // "example1",
+            // Add more values as needed
+        ];
+
+        // Function to generate a random index from the list
+        function getRandomIndex() {
+            return Math.floor(Math.random() * linkValues.length);
+        }
+
+        // Get a random index and update the link
+        function updateRandomLink() {
+            const randomIndex = getRandomIndex();
+            const randomValue = linkValues[randomIndex];
+            // const randomLink = `https://www.example.com/${randomValue}`;
+            const randomLink = `https://www.google.com/maps/@?api=1&map_action=map&basemap=satellite&center=${randomValue}&zoom=18`;
+            document.getElementById("random-link").setAttribute("href", randomLink);
+            document.getElementById("random-link").textContent = `${randomValue}`;
+        }
+
+        // Initial update
+        updateRandomLink();
+
+        // Add an event listener to update the link when clicked
+        document.getElementById("random-link").addEventListener("click", updateRandomLink);
+    </script>
+</body>
+</html>
